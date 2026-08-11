@@ -1,0 +1,43 @@
+# Copy to .gitignore — BEFORE the first .env file exists.
+# A secret is compromised the moment it is committed; deleting it in the next
+# commit does not help, it is in the history.
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+build/
+.next/
+out/
+.turbo/
+.vercel/
+
+# test output
+coverage/
+playwright-report/
+test-results/
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# os
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# local agent settings
+.claude/settings.local.json
