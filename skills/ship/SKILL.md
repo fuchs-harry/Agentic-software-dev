@@ -30,6 +30,7 @@ ten minutes. After it, a wrong plan costs a branch, a review and a rollback.
 
 This skill says **when** things happen. What to actually build is elsewhere:
 [`web-app`](../web-app/SKILL.md), [`supabase-db`](../supabase-db/SKILL.md),
+[`nextjs-supabase-security`](../nextjs-supabase-security/SKILL.md),
 [`testing-and-ci`](../testing-and-ci/SKILL.md), [`deployment`](../deployment/SKILL.md).
 Starting from nothing: [`project-start`](../project-start/SKILL.md).
 Never used git: [`github-basics`](../github-basics/SKILL.md).

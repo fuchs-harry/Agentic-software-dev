@@ -26,6 +26,12 @@ Default dial for anything in this skill: **`effort: deep`, `gates: strict`**
 ([`ship`](../ship/SKILL.md)). Not caution for its own sake — this is the layer
 where being wrong exposes other people's data.
 
+> This skill covers **modelling and migrations**. The security layer over them —
+> policy traps, the Advisor lint map, Server Actions, auth hardening, storage,
+> the required negative test — is
+> [`nextjs-supabase-security`](../nextjs-supabase-security/SKILL.md). Load both
+> when the change touches who can see what.
+
 ---
 
 ## Row-level security, in one page
