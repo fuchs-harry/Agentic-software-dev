@@ -46,7 +46,7 @@ Work on a phone? Have multiple users?"* Every "no" is a week you did not spend.
 **Who must never see what?**
 The first permissions question, asked in human terms. If any answer separates
 two people's data, the project is `effort: deep` from now on and needs
-[`supabase-db`](../supabase-db/SKILL.md) from the first table.
+[`supabase-db`](../../supabase-db/SKILL.md) from the first table.
 
 **What happens when it goes wrong?**
 Double booking, wrong price, a message to the wrong person. Ask what the

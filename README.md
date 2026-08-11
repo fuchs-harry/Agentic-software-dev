@@ -8,4 +8,4 @@ Built for people who can describe what they want but have never opened a
 terminal, and for developers who are tired of agents that produce a thousand
 lines nobody asked for.
 
-> Status: under construction. See [`docs/`](docs/) once it lands.
+> Status: under construction. The guide lands in `docs/`.

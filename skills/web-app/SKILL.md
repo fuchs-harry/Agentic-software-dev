@@ -87,6 +87,8 @@ Forms are where people put effort in, and where losing it hurts most.
 
 Patterns, including the accessible-by-default field structure:
 **[`references/screens-and-states.md`](references/screens-and-states.md)**.
+Folder layout, where business rules live, and when to extract a component:
+**[`references/structure.md`](references/structure.md)**.
 
 ---
 

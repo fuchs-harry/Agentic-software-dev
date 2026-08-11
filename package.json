@@ -1,0 +1,20 @@
+{
+  "name": "agentic-software-dev",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A Claude Code plugin: a method for building real software with an agent.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuchs-harry/Agentic-software-dev.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test \"scripts/**/*.test.mjs\"",
+    "check": "npm run validate && npm test"
+  }
+}
