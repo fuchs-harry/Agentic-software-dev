@@ -1,0 +1,168 @@
+---
+name: web-app
+description: >-
+  Building the part people look at: which screens actually exist, where state lives, what
+  happens while data is loading and when it fails, forms that do not lose what someone
+  typed, and accessibility that costs nothing if done from the start. Use when building or
+  changing any user interface — a page, a screen, a form, a component, a layout, navigation
+  — or when asked to "build the website", "add a page", "make it look better", "fix the
+  layout". Load together with `ship`; this skill says what to build, `ship` says in what
+  order.
+---
+
+# The part people look at
+
+Most interface bugs are not visual. They are **states nobody drew**: the list
+before it loads, the list that is empty, the list that failed, the button
+already pressed once.
+
+```
+every screen has four states, not one:
+
+  LOADING     something is coming — say so, do not show a blank
+  EMPTY       nothing here yet — say why, and what to do about it
+  ERROR       it went wrong — say what, and what the person can do
+  CONTENT     the one everybody designs
+```
+
+If you only build the fourth, the other three still happen — they just happen
+badly, as a blank screen or a spinner forever. **Design all four or you have
+designed one and shipped four.**
+
+---
+
+## Start from the moment, not the pages
+
+The charter names one moment that has to be good. Build the screens that moment
+needs, and no others.
+
+```
+Charter moment: "seeing at a glance which nights are free, blocking one in two taps"
+
+Screens that serves:  a calendar · a block-out sheet
+Screens it does not:  settings · profile · reports · onboarding
+```
+
+Everything not in the first list is a later decision. Screens added "while we're
+at it" are the main way a two-week build becomes a two-month one.
+
+---
+
+## Where state lives
+
+Four places, in order of preference. Reaching for the fourth first is the most
+common structural mistake in front-end code.
+
+| Put it | When | Example |
+|---|---|---|
+| **In the URL** | it should survive a refresh or be shareable | which tab, which filter, which page |
+| **On the server** | it is the truth and others must see it | the bookings themselves |
+| **In the component** | only this component cares | is this dropdown open |
+| **In global state** | genuinely needed in unrelated places | the signed-in user, the theme |
+
+Global state that is really server data is the classic error: the data now
+exists twice and the copies drift. Server data belongs in something that knows
+about caching and refetching (TanStack Query, or your framework's loader), not
+in a store you keep in sync by hand.
+
+The URL is underused. If a person filters a list, then refreshes and loses the
+filter, the state was in the wrong place.
+
+---
+
+## Forms
+
+Forms are where people put effort in, and where losing it hurts most.
+
+- **Never lose what someone typed.** Not on a failed submit, not on a
+  validation error, not on a navigation away. Everything else here is detail.
+- **Validate on blur, not on every keystroke.** Telling someone their email is
+  invalid while they are typing the third character is hostile.
+- **One error, next to the field, in plain language.** "Enter a date after
+  today", not "Invalid input: constraint violation".
+- **Disable the submit button while it is submitting**, and say what is
+  happening. Double submission is the most common bug in a booking flow.
+- **Validate on the server too, always.** Client validation is convenience.
+  Server validation is the rule. Anyone can skip the client.
+
+Patterns, including the accessible-by-default field structure:
+**[`references/screens-and-states.md`](references/screens-and-states.md)**.
+
+---
+
+## Accessibility, the version that costs nothing
+
+Done from the start it is free. Retrofitted it is a project.
+
+- **Real elements.** A `<button>` for actions, an `<a href>` for navigation. A
+  clickable `<div>` cannot be reached by keyboard and is not announced.
+- **Every input has a `<label>`.** Placeholder text is not a label — it
+  disappears exactly when it is needed.
+- **Keyboard reaches everything.** Press Tab through your screen once. If you
+  cannot complete the task, neither can a chunk of your users.
+- **Focus is visible.** Never `outline: none` without something replacing it.
+- **Contrast at least 4.5:1** for body text. Grey-on-white at 3:1 is a
+  designer's preference that costs you readers over 40 and everyone outdoors.
+- **Errors are text**, not just a red border. Colour alone is invisible to
+  colour-blind users and to screen readers.
+
+That list covers most of it and takes no extra time when it is how you write in
+the first place.
+
+---
+
+## Making it look intentional
+
+Constraints beat taste. Pick once, then stop deciding:
+
+- **One type scale.** Four or five sizes, no more. Arbitrary sizes read as
+  accidents.
+- **One spacing scale.** Multiples of 4 or 8. Nothing at 13px.
+- **Few colours.** One accent, a neutral ramp, and semantic colours for
+  success/warning/error. A second accent is almost always a mistake.
+- **One radius, one shadow depth.** Mixing them is what makes a page feel
+  assembled from parts.
+
+Then: **build mobile first.** Not because of a doctrine, but because it forces
+the hierarchy question — what matters most when only one thing fits? The
+desktop layout is that answer with room to breathe.
+
+---
+
+## Performance, the three that matter
+
+Ignore the rest until these are right.
+
+1. **Images.** The single biggest cause of slow pages. Correct dimensions,
+   modern format, lazy-loaded below the fold.
+2. **Do not block the first paint.** Fonts and scripts that must load before
+   anything renders turn a fast connection into a slow one.
+3. **A perceived-instant response to every click.** Under ~100ms, or a visible
+   acknowledgement. A button that appears to do nothing gets clicked again.
+
+---
+
+## Anti-patterns
+
+| Pattern | Why it hurts |
+|---|---|
+| Only the content state built | Blank screens and infinite spinners in production |
+| Server data mirrored into a global store | Two copies, which drift, silently |
+| A clickable `<div>` | No keyboard, no screen reader, no focus |
+| Placeholder used as a label | Disappears exactly when it is needed |
+| Errors shown only as a red border | Invisible to colour-blind and screen-reader users |
+| Form state lost on a failed submit | The single most enraging bug in any application |
+| A component library imported for one button | A megabyte for a rounded rectangle |
+| Building settings and profile before the core moment | The moment is what makes it worth using |
+
+---
+
+## Done means
+
+- [ ] All four states exist for every screen that loads data
+- [ ] Nothing typed is ever lost — failed submit, validation error, navigation
+- [ ] Server-side validation exists for every client-side rule
+- [ ] Tab reaches everything; focus is visible
+- [ ] Every input has a real label; errors are text
+- [ ] It works on a phone-sized screen
+- [ ] Nothing in the interface is outside the charter moment without a reason
