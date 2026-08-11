@@ -1,0 +1,33 @@
+{
+  "name": "agentic-software-dev",
+  "owner": {
+    "name": "Harry Fuchs",
+    "url": "https://github.com/fuchs-harry"
+  },
+  "metadata": {
+    "description": "A disciplined delivery loop for agentic software development, packaged as one plugin.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "agentic-software-dev",
+      "source": "./",
+      "description": "Scope → plan → human approval → build → prove → ship. Effort and human checkpoints are dials. Sub-skills for web apps, Supabase, tests/CI and deployment.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Harry Fuchs",
+        "url": "https://github.com/fuchs-harry"
+      },
+      "homepage": "https://github.com/fuchs-harry/Agentic-software-dev",
+      "license": "MIT",
+      "category": "workflow",
+      "keywords": [
+        "workflow",
+        "planning",
+        "pull-request",
+        "testing",
+        "human-in-the-loop"
+      ]
+    }
+  ]
+}

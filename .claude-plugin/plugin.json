@@ -1,0 +1,22 @@
+{
+  "name": "agentic-software-dev",
+  "version": "0.1.0",
+  "description": "A method for building real software with an AI agent: scope, plan, human approval, build, prove, ship. Effort and human checkpoints are dials you set per task. Includes sub-skills for web apps, Supabase, tests/CI and deployment.",
+  "author": {
+    "name": "Harry Fuchs",
+    "url": "https://github.com/fuchs-harry"
+  },
+  "homepage": "https://github.com/fuchs-harry/Agentic-software-dev",
+  "repository": "https://github.com/fuchs-harry/Agentic-software-dev",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "planning",
+    "code-review",
+    "pull-request",
+    "testing",
+    "supabase",
+    "no-code",
+    "human-in-the-loop"
+  ]
+}
