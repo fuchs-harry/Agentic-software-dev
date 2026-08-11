@@ -1,13 +1,15 @@
 ---
 name: web-app
 description: >-
-  Building the part people look at: which screens actually exist, where state lives, what
-  happens while data is loading and when it fails, forms that do not lose what someone
-  typed, and accessibility that costs nothing if done from the start. Use when building or
-  changing any user interface — a page, a screen, a form, a component, a layout, navigation
-  — or when asked to "build the website", "add a page", "make it look better", "fix the
-  layout". Load together with `ship`; this skill says what to build, `ship` says in what
-  order.
+  Building the part people look at: which screens exist, where state lives, what happens
+  while data loads and when it fails, forms that do not lose what someone typed, visual
+  design that does not read as a default, and motion that feels physical rather than
+  scripted. Use when building or changing any user interface — a page, screen, form,
+  component, layout, navigation — or when asked to "build the website", "add a page",
+  "make it look better", "fix the layout", "make it feel smoother", "add an animation",
+  "the design looks generic". Also load for typography, spacing, colour, dark mode,
+  drag/swipe/sheet interactions, spring animation, accessibility or reduced motion. Load
+  together with `ship`; this skill says what to build, `ship` says in what order.
 ---
 
 # The part people look at
@@ -115,19 +117,63 @@ the first place.
 
 ## Making it look intentional
 
-Constraints beat taste. Pick once, then stop deciding:
+Software built by an agent tends to look *assembled* rather than designed:
+eleven font sizes, four greys nobody chose, a shadow on everything. Not because
+any decision was wrong — because none was made, and the defaults accumulated.
 
-- **One type scale.** Four or five sizes, no more. Arbitrary sizes read as
-  accidents.
-- **One spacing scale.** Multiples of 4 or 8. Nothing at 13px.
-- **Few colours.** One accent, a neutral ramp, and semantic colours for
-  success/warning/error. A second accent is almost always a mistake.
-- **One radius, one shadow depth.** Mixing them is what makes a page feel
-  assembled from parts.
+Constraints beat taste. Decide once, then stop deciding:
 
-Then: **build mobile first.** Not because of a doctrine, but because it forces
-the hierarchy question — what matters most when only one thing fits? The
-desktop layout is that answer with room to breathe.
+- **One type scale.** Four or five sizes. And **tracking is size-specific** —
+  large text wants negative letter-spacing, small text slightly positive. One
+  fixed value across the app is wrong somewhere by construction.
+- **One spacing scale.** Multiples of 4 or 8. Nothing at 13px. Spacing is how
+  grouping is communicated, and it is stronger than any divider line.
+- **One accent colour.** A neutral ramp, plus semantic colours for
+  success/warning/error. A second accent means neither is emphasis anymore.
+- **One radius, one shadow depth**, as tokens. Mixing them is what makes a page
+  feel assembled from parts of other pages.
+- **Both themes from the start.** Retrofitting dark mode means hunting every
+  hard-coded value in the codebase.
+
+Then **build mobile first** — not as doctrine, but because it forces the
+hierarchy question: *when only one thing fits, which one is it?* Start wide and
+nothing ever makes you rank anything.
+
+The full set — type, colour, depth and translucent materials, feedback,
+wayfinding, and the eight principles to argue with when something feels wrong:
+**[`references/design.md`](references/design.md)**.
+
+---
+
+## Motion
+
+Motion is not a layer applied after the pixels. For anything a person can touch,
+it *is* the interaction — and it is the half that gets skipped.
+
+The whole idea in one sentence: **motion starts from where things currently are,
+inherits the user's velocity, projects momentum forward, and can be grabbed and
+reversed at any instant.**
+
+Four rules that cover most of it:
+
+- **Respond on `pointerdown`, not on release**, and keep feedback continuous
+  *during* a drag rather than only at the end.
+- **Every animation is interruptible.** Never lock out input while animating,
+  and always animate from the element's live on-screen value — starting from the
+  target value is the classic visible jump.
+- **Springs, not CSS transitions, for anything gesture-driven.** Default to
+  critically damped (`damping 1.0`, `response 0.3–0.4`). Add bounce *only* when
+  the gesture itself carried momentum. CSS transitions stay right for
+  non-interactive changes: a hover, a colour, a fade.
+- **Hand off the release velocity**, and project where the flick would land
+  rather than snapping to the point nearest release.
+
+And: `prefers-reduced-motion` is not optional. For some people this is nausea,
+not preference — replace slides and springs with a short cross-fade, keep the
+feedback.
+
+Springs, velocity handoff, momentum projection, rubber-banding, haptics and the
+concrete values: **[`references/motion.md`](references/motion.md)**.
 
 ---
 
@@ -156,6 +202,9 @@ Ignore the rest until these are right.
 | Form state lost on a failed submit | The single most enraging bug in any application |
 | A component library imported for one button | A megabyte for a rounded rectangle |
 | Building settings and profile before the core moment | The moment is what makes it worth using |
+| CSS transitions on something draggable | Cannot be grabbed and reversed; it will feel stuck |
+| Input disabled while animating | The interface stops listening exactly when the user changed their mind |
+| Eleven font sizes and four unplanned greys | Reads as accidental, because it was |
 
 ---
 
@@ -167,4 +216,7 @@ Ignore the rest until these are right.
 - [ ] Tab reaches everything; focus is visible
 - [ ] Every input has a real label; errors are text
 - [ ] It works on a phone-sized screen
+- [ ] Type, spacing, colour and radius come from a scale — no one-off values
+- [ ] Anything draggable is interruptible and hands off its release velocity
+- [ ] `prefers-reduced-motion` handled, and it degrades to a cross-fade, not to nothing
 - [ ] Nothing in the interface is outside the charter moment without a reason
