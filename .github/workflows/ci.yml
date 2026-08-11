@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: validate · test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Structure, manifests, frontmatter, links. Fails fast and says which file.
+      - name: Validate plugin structure
+        run: npm run validate
+
+      # Includes the negative controls: fixtures broken on purpose that the
+      # validator must reject. A green run here means the checks can go red.
+      - name: Test the validator
+        run: npm test
