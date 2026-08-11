@@ -25,7 +25,12 @@ jobs:
       - name: Validate plugin structure
         run: npm run validate
 
+      # This repository's own docs are a graph, checked by the same script the
+      # plugin ships to other projects. Eating our own cooking.
+      - name: Validate the docs graph
+        run: npm run docs:check
+
       # Includes the negative controls: fixtures broken on purpose that the
-      # validator must reject. A green run here means the checks can go red.
-      - name: Test the validator
+      # checkers must reject. A green run here means the checks can go red.
+      - name: Test the checkers
         run: npm test

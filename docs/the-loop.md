@@ -1,3 +1,11 @@
+---
+title: The loop, and what each step buys
+type: reference
+status: current
+updated: 2026-08-11
+tags: [guide, method]
+---
+
 # The loop, and what each step buys
 
 ```
@@ -131,3 +139,11 @@ other people's data — no matter how small it looks. Small changes cause most
 outages, precisely because they skip the loop.
 
 The dial for saying how careful to be: [dials.md](dials.md).
+
+---
+
+## Related
+
+- [Effort and gates](dials.md) — how deep each pass of the loop goes
+- [The first hour](first-hour.md) — the loop, walked through end to end
+- [The ship skill](../skills/ship/SKILL.md) — the version the agent reads

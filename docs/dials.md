@@ -1,3 +1,11 @@
+---
+title: Effort and gates
+type: reference
+status: current
+updated: 2026-08-11
+tags: [guide, method]
+---
+
 # Effort and gates
 
 Two dials. They are how you say *how careful to be* and *how often to be
@@ -136,3 +144,11 @@ If you want to set them explicitly:
 
 Or just in words — "be really careful with this one", "this is throwaway, go
 fast". Both work. The words are easier and they are what most people use.
+
+---
+
+## Related
+
+- [The loop](the-loop.md) — what the dials are turning the depth of
+- [The effort model](../skills/ship/references/effort-model.md) — the full model the agent reads
+- [Glossary](glossary.md) — blast radius, gate, negative control

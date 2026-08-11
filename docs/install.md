@@ -1,3 +1,11 @@
+---
+title: Installing the plugin
+type: runbook
+status: current
+updated: 2026-08-11
+tags: [meta, setup]
+---
+
 # Installing
 
 You need [Claude Code](https://claude.com/claude-code) and a GitHub account.
@@ -99,3 +107,10 @@ Nothing to build yet? Read [first-hour.md](first-hour.md) — it walks through a
 real project from idea to live site, with the actual words you type.
 
 Already have a project? Run `/status` in it and see what it says.
+
+---
+
+## Related
+
+- [The first hour](first-hour.md) — what to do once it is installed
+- [The guide index](INDEX.md) — everything else

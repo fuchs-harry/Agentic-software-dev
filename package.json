@@ -14,7 +14,8 @@
   },
   "scripts": {
     "validate": "node scripts/validate.mjs",
+    "docs:check": "node templates/scripts/check-docs.mjs",
     "test": "node --test \"scripts/**/*.test.mjs\"",
-    "check": "npm run validate && npm test"
+    "check": "npm run validate && npm run docs:check && npm test"
   }
 }

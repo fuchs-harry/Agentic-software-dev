@@ -126,15 +126,25 @@ CLAUDE.md              the rules the agent must follow in this repo
 LICENSE
 .gitignore             .env is in here from commit one
 docs/
+  INDEX.md             the hub of the knowledge graph — nothing escapes it
   CHARTER.md
   decisions/0001-stack.md
   plans/README.md      the index of plan nodes, empty for now
+scripts/
+  check-docs.mjs       validates the docs graph; runs in CI
 .github/
   workflows/ci.yml     runs on every push, from the first push
   PULL_REQUEST_TEMPLATE.md
 src/ (or app/)         the actual thing
 tests/                 with one real test in it already
 ```
+
+Documentation is a **graph from the first commit**, not a folder that fills up:
+every node carries `title`, `type`, `status` and `updated`, ends with its
+`Related` links, and is reachable from `docs/INDEX.md`. Open `docs/` in Obsidian
+and the graph view is the real shape of the project. See
+[`docs-graph`](../docs-graph/SKILL.md) — the structure is nearly free now and
+expensive to impose on forty existing files later.
 
 Ready-made versions of these files: [`../../templates/`](../../templates/).
 
@@ -185,6 +195,7 @@ like everything after it.
 - [ ] Charter written, read back, and **approved by the person whose idea it is**
 - [ ] Stack decision recorded with rejected alternatives
 - [ ] Repository exists with README, CLAUDE.md, LICENSE, `.gitignore`, `docs/`, CI
+- [ ] `docs/INDEX.md` exists and the docs check runs in the pipeline
 - [ ] First push done, **CI observed green**
 - [ ] The empty app runs — someone looked at it
 - [ ] One real test exists and passes

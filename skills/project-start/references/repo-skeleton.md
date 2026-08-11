@@ -12,9 +12,12 @@ LICENSE
 .gitignore                     .env is in here from commit one
 .gitattributes                 line endings normalised, so history is portable
 docs/
+  INDEX.md                     the hub of the graph — every node reachable from here
   CHARTER.md                   who it is for and what it does not do
   decisions/0001-stack.md      what was chosen and why
   plans/README.md              index of plan nodes — empty is fine, missing is not
+scripts/
+  check-docs.mjs               validates the docs graph; runs in CI
 .github/
   workflows/ci.yml             runs on every push and pull request
   PULL_REQUEST_TEMPLATE.md     forces evidence, not "tested locally"
@@ -41,6 +44,12 @@ first time you need a test, you should be writing a test, not fighting a config.
 
 **`docs/plans/README.md`, even empty.** The folder existing is what makes
 writing a plan feel like following the path rather than inventing procedure.
+
+**`docs/INDEX.md` and the docs check, from commit one.** Documentation does not
+die from being unwritten; it dies from accumulating — forty files, six of them
+contradicting each other, none dated. A graph with a validator costs nothing
+while `docs/` holds three files, and cannot realistically be imposed once it
+holds forty. See [`docs-graph`](../../docs-graph/SKILL.md).
 
 **`CLAUDE.md` before the agent writes anything.** It is the constitution: what
 the agent may not do, which commands to run, what "done" means here. Written

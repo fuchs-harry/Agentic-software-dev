@@ -26,7 +26,12 @@ Then:
    files you did not mean to add.
 
 3. **Update the docs the change made wrong** — in this pull request, not later.
-   Then set the plan node to `Status: shipped` once the number exists.
+   Walk the trigger table in the `docs-graph` skill: schema → the schema
+   reference node; a changed decision → a **new** decision that supersedes it;
+   a changed capability → its feature node and `CHARTER.md`; anything named in
+   `CLAUDE.md` → `CLAUDE.md` first. Set `updated` on every node you touched, run
+   `node scripts/check-docs.mjs`, and set the plan node to `superseded` with the
+   PR number and what actually shipped versus what was planned.
 
 4. **Open it**: `gh pr create --base main --fill --body-file <body>`.
 

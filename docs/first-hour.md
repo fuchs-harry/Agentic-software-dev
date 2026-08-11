@@ -1,3 +1,11 @@
+---
+title: The first hour
+type: runbook
+status: current
+updated: 2026-08-11
+tags: [guide, walkthrough]
+---
+
 # The first hour
 
 A complete walkthrough, with the words you actually type. The example is a
@@ -181,3 +189,12 @@ are overriding.
 | **It says "this is too big, I want to split it"** | Say yes. It is right |
 | **It stops before something irreversible** | Read what it says will be lost. Then decide. This is the gate working |
 | **You want to go faster** | Say so. It will tell you which check it will not skip, and why |
+
+---
+
+## Related
+
+- [Installing the plugin](install.md) — do this first
+- [The loop](the-loop.md) — why the order in this walkthrough is what it is
+- [Effort and gates](dials.md) — how Claude decides when to stop and ask
+- [Glossary](glossary.md) — any word above that was unfamiliar

@@ -9,7 +9,8 @@ Target: **$ARGUMENTS** (if empty, use the most recently approved plan node and
 say which one you picked).
 
 Load the `ship` skill, plus whichever domain skills the work needs:
-`web-app`, `supabase-db`, `testing-and-ci`, `deployment`.
+`web-app`, `supabase-db`, `nextjs-supabase-security`, `testing-and-ci`,
+`deployment`, `docs-graph`.
 
 **Refuse to start if:**
 - the plan node does not exist → run `/plan` instead

@@ -1,3 +1,11 @@
+---
+title: Glossary
+type: reference
+status: current
+updated: 2026-08-11
+tags: [guide, reference]
+---
+
 # Glossary
 
 Every word this repository uses that you might not know, in the order you will
@@ -171,3 +179,11 @@ because parallel changes there collide. Migrations, shared types, config.
 
 **Point of no return** — an action that cannot be undone in five minutes
 without anyone noticing. Always a gate, at every setting.
+
+---
+
+## Related
+
+- [The loop](the-loop.md) — the method these words describe
+- [Effort and gates](dials.md) — the two dials, in detail
+- [Git for people who have not used it](../skills/github-basics/SKILL.md) — the git terms, at length

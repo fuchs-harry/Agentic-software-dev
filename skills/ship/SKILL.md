@@ -34,6 +34,8 @@ This skill says **when** things happen. What to actually build is elsewhere:
 [`testing-and-ci`](../testing-and-ci/SKILL.md), [`deployment`](../deployment/SKILL.md).
 Starting from nothing: [`project-start`](../project-start/SKILL.md).
 Never used git: [`github-basics`](../github-basics/SKILL.md).
+Keeping the documentation a maintained graph rather than a pile:
+[`docs-graph`](../docs-graph/SKILL.md).
 
 ---
 
@@ -252,4 +254,6 @@ how a bad afternoon becomes a bad week.
 - [ ] CI green — every job, not just the fast ones
 - [ ] PR open with evidence, **not self-merged**
 - [ ] Plan node updated to `Status: shipped` with the PR number
-- [ ] Documentation that the change made wrong is corrected in the same PR
+- [ ] **Documentation the change made wrong is corrected in the same PR** —
+      the trigger table is in [`docs-graph`](../docs-graph/SKILL.md); the docs
+      check passes. A follow-up docs issue does not happen

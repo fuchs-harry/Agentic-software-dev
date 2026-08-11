@@ -48,7 +48,13 @@ Decisions that are binding: `docs/decisions/`
    way back is, and wait.
 9. **Never make CI green by weakening it.** No `--no-verify`, no skipped tests,
    no adjusted expectations to match a bug.
-10. **When in doubt on something destructive, ask.** Never guess.
+10. **Documentation is a graph, and a change that makes a node wrong fixes it in
+    the same pull request.** Every file under `docs/` has frontmatter
+    (`title`, `type`, `status`, `updated`), ends with a `## Related` section, and
+    is reachable from `docs/INDEX.md`. `node scripts/check-docs.mjs` enforces it
+    and runs in CI. Before creating a new file, ask whether an existing node is
+    simply out of date — it usually is. Load the `docs-graph` skill.
+11. **When in doubt on something destructive, ask.** Never guess.
 
 ## Effort and gates
 

@@ -1,4 +1,21 @@
+---
+title: The guide
+type: reference
+status: current
+updated: 2026-08-11
+tags: [meta, guide]
+---
+
 # The guide
+
+> The hub of this repository's documentation graph. Every node below is
+> reachable from here — an orphan is a validation failure, not a discovery.
+> Checked by `npm run docs:check`, which runs in CI.
+>
+> This repository uses **relative markdown links** rather than `[[wikilinks]]`,
+> because it is browsed on GitHub more than in Obsidian. Obsidian graphs these
+> too. The choice is explained in the
+> [docs-graph skill](../skills/docs-graph/SKILL.md).
 
 The plugin talks to the agent. These pages talk to you.
 

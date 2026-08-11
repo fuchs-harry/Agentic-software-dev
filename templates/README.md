@@ -8,9 +8,11 @@ cp -r /path/to/Agentic-software-dev/templates/.github  .
 cp    /path/to/Agentic-software-dev/templates/CLAUDE.md .
 cp    /path/to/Agentic-software-dev/templates/gitignore .gitignore
 cp    /path/to/Agentic-software-dev/templates/env.example .env.example
+cp -r /path/to/Agentic-software-dev/templates/scripts .
 mkdir -p docs/plans docs/decisions
 cp    /path/to/Agentic-software-dev/templates/docs/plans-README.md docs/plans/README.md
 cp    /path/to/Agentic-software-dev/templates/docs/0001-stack.md   docs/decisions/0001-stack.md
+cp    /path/to/Agentic-software-dev/skills/docs-graph/assets/index-template.md docs/INDEX.md
 ```
 
 Then fill in every `<placeholder>`. A template shipped with its placeholders
@@ -26,5 +28,7 @@ still in it is worse than no template — people learn to skim it.
 | `env.example` | Documentation that cannot go stale silently |
 | `docs/plans/README.md` | The folder existing is what makes writing a plan feel like following the path |
 | `docs/0001-stack.md` | Stops the same stack argument recurring every six weeks from zero |
+| `docs/INDEX.md` | The hub of the knowledge graph. Free while `docs/` holds three files; impossible to impose once it holds forty |
+| `scripts/check-docs.mjs` | Validates that graph in CI — frontmatter, links, orphans, staleness. A rule nothing checks is a suggestion |
 
 After copying: push, and **watch CI go green before writing a feature**.

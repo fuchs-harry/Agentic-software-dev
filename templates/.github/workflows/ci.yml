@@ -47,6 +47,12 @@ jobs:
       - name: Build
         run: pnpm build
 
+      # The docs graph is checked like anything else: frontmatter, links,
+      # orphans, staleness. Documentation nothing verifies drifts silently, and
+      # stale docs are worse than none — they are confidently wrong.
+      - name: Docs graph
+        run: node scripts/check-docs.mjs
+
   e2e:
     name: end-to-end
     runs-on: ubuntu-latest
