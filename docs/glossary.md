@@ -48,6 +48,37 @@ works".
 
 ---
 
+## Documentation
+
+**Node** — one file in `docs/`, about one subject, with frontmatter saying what
+kind of thing it is and when it was last checked.
+
+**Frontmatter** — the block at the top of a file between `---` lines. Here it
+carries `title`, `type`, `status`, `updated` and `tags`.
+
+**Graph** — the documentation seen as nodes connected by links, rather than
+files sorted into folders. A subject can belong to several contexts at once,
+which a folder tree cannot express.
+
+**Wikilink** — `[[node-name]]`. The Obsidian link syntax; it survives a file
+being moved. GitHub renders it as plain text, which is the trade-off.
+
+**Orphan** — a node nothing links to and the index does not list. A validation
+failure, because a node nobody can find is a node nobody maintains.
+
+**Stale** — a node marked `current` whose `updated` date is past the limit. It
+gets read, then fixed, re-dated, or superseded — never re-dated without being
+read.
+
+**Superseded** — replaced by a newer node, and **kept**. Deleting it would
+delete the reason something was a bad idea, and it gets proposed again in four
+months.
+
+**Hub node** — a short node that introduces an area and links to its children.
+What a newcomer reads first.
+
+---
+
 ## Git
 
 **Git** — records versions of your files, on your computer. Works offline.

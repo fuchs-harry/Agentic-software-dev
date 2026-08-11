@@ -79,7 +79,7 @@ Full model: [`skills/ship/references/effort-model.md`](skills/ship/references/ef
 
 ## What is in the box
 
-**Eight skills.** They load themselves when relevant — you do not invoke them.
+**Ten skills.** They load themselves when relevant — you do not invoke them.
 
 | | |
 |---|---|
@@ -88,17 +88,52 @@ Full model: [`skills/ship/references/effort-model.md`](skills/ship/references/ef
 | [`github-basics`](skills/github-basics/SKILL.md) | Git for people who have never used it, and how to undo each mistake |
 | [`testing-and-ci`](skills/testing-and-ci/SKILL.md) | What is worth testing, the negative control, CI as a gate |
 | [`pr-orchestration`](skills/pr-orchestration/SKILL.md) | Cutting, stacking, parallel branches, reviewing so the review finds something |
-| [`web-app`](skills/web-app/SKILL.md) | Four states per screen, forms that keep what was typed, accessibility that costs nothing |
+| [`docs-graph`](skills/docs-graph/SKILL.md) | Documentation as a maintained graph, Obsidian-style, validated in CI |
+| [`web-app`](skills/web-app/SKILL.md) | Four states per screen, forms that keep what was typed, [design](skills/web-app/references/design.md) that is decided rather than defaulted, and [motion](skills/web-app/references/motion.md) that can be grabbed mid-flight |
 | [`supabase-db`](skills/supabase-db/SKILL.md) | Row-level security in the same migration, never later |
+| [`nextjs-supabase-security`](skills/nextjs-supabase-security/SKILL.md) | Two layers that must agree. Middleware is not a boundary; views bypass RLS by default |
 | [`deployment`](skills/deployment/SKILL.md) | Environments, secrets, and a rollback you have actually tested |
 
-**Seven commands.** `/start` · `/plan` · `/build` · `/check` · `/ship` ·
-`/review` · `/status`
+**Eight commands.** `/start` · `/plan` · `/build` · `/check` · `/ship` ·
+`/review` · `/docs` · `/status`
 
 **Four agents.** `planner` · `verifier` · `reviewer` · `security-auditor`
 
 **Templates** for a new project's first commit — CLAUDE.md, CI, PR and issue
-templates, `.gitignore` with `.env` already in it: [`templates/`](templates/)
+templates, `.gitignore` with `.env` already in it, and the docs-graph checker:
+[`templates/`](templates/)
+
+---
+
+## Documentation that stays true
+
+Documentation does not die from being unwritten. It dies from **accumulating**:
+forty files, six contradicting each other, none dated, and no way to tell which
+are still true.
+
+So `docs/` is a graph, not a folder — Obsidian-compatible, and validated:
+
+```
+one subject per node          you can tell what a file is for from its name
+typed frontmatter             title · type · status · updated
+links, not folder hierarchy   a subject can belong to several contexts at once
+an index nothing escapes      an orphan is a build failure, not a discovery
+a check in CI                 the rules survive the week everyone is busy
+```
+
+The rule that keeps it true: **a change that makes a document wrong fixes it in
+the same pull request.** Not a follow-up issue — the follow-up does not happen,
+and the next person to read the node will believe it.
+
+[`scripts/check-docs.mjs`](templates/scripts/check-docs.mjs) enforces it:
+frontmatter, unresolved links (distinguishing *planned* from *broken*), orphans
+by traversal from the index, kebab-case names, and `current` nodes past the
+staleness limit. Open `docs/` in Obsidian and the graph view is the real shape
+of the project — clusters where the work is, isolated dots where the
+documentation has drifted from reality.
+
+This repository's own [`docs/`](docs/INDEX.md) is that graph, checked by that
+script, in its own pipeline.
 
 ---
 
@@ -133,6 +168,7 @@ fixture broken on purpose that it must reject. See
 
 | | |
 |---|---|
+| [docs/INDEX.md](docs/INDEX.md) | The hub — and a live example of the graph format |
 | [docs/install.md](docs/install.md) | Getting it running. Five minutes |
 | [docs/first-hour.md](docs/first-hour.md) | Idea to live site, with the words you type |
 | [docs/the-loop.md](docs/the-loop.md) | Why the order is what it is |

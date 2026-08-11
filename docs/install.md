@@ -45,7 +45,7 @@ the commands are loaded.
 
 ## What you just got
 
-**Seven commands** you can type:
+**Eight commands** you can type:
 
 | | |
 |---|---|
@@ -55,13 +55,15 @@ the commands are loaded.
 | `/check` | prove it works — acceptance criteria, negative control, CI |
 | `/ship` | open the pull request, with evidence |
 | `/review` | review a pull request properly |
+| `/docs` | audit and repair the documentation graph |
 | `/status` | where does this project actually stand |
 
-**Eight skills** that load themselves when relevant — you do not invoke these,
+**Ten skills** that load themselves when relevant — you do not invoke these,
 Claude notices when they apply:
 
 `ship` · `project-start` · `github-basics` · `testing-and-ci` ·
-`pr-orchestration` · `web-app` · `supabase-db` · `deployment`
+`pr-orchestration` · `docs-graph` · `web-app` · `supabase-db` ·
+`nextjs-supabase-security` · `deployment`
 
 **Four agents** Claude can delegate to: `planner`, `verifier`, `reviewer`,
 `security-auditor`.
